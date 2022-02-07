@@ -1,6 +1,11 @@
 let previousAction = document.querySelector(".previous-operand");
 let display = document.querySelector(".current-operand");
 
+let wasEqualPressed = false;
+function clearAfterEqual(){
+  display.innerText = "";
+}
+
 let buttons = Array.from(document.querySelectorAll("button"));
 buttons.map((button) => {
   button.addEventListener("click", (e) => {
@@ -14,14 +19,16 @@ buttons.map((button) => {
         break;
       case "=":
         previousAction.innerText = display.innerText;
-        let caculation = eval(display.innerText);
-        console.log(caculation);
-        if (caculation % 1 === 0) caculation.toFixed(3);
-        display.innerText = caculation;
+        let caculation = eval(display.innerText)
+        if(caculation%1 != 0) caculation = caculation.toFixed(3)
+        display.innerText = caculation;  
+        wasEqualPressed = !wasEqualPressed 
         break;
       default:
-        console.log("123");
-        console.log("dsaa")
+        if(wasEqualPressed) {
+          clearAfterEqual() 
+          wasEqualPressed = !wasEqualPressed
+        }
         display.innerText += e.target.innerText;
     }
   });
