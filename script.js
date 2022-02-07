@@ -21,6 +21,7 @@ buttons.map((button) => {
         break;
       default:
         console.log("123");
+        console.log("dsaa")
         display.innerText += e.target.innerText;
     }
   });
