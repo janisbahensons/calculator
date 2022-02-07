@@ -8,18 +8,19 @@ buttons.map((button) => {
       case "AC":
         previousAction.innerText = "";
         display.innerText = "";
-        break
+        break;
       case "DEL":
         display.innerText = display.innerText.slice(0, -1);
-        break
+        break;
       case "=":
-        previousAction.innerText = display.innerText
-        let caculation = eval(display.innerText)
-        console.log(caculation)
-        if(caculation % 1 === 0) caculation.toFixed(3)
-        display.innerText = caculation
-        break
+        previousAction.innerText = display.innerText;
+        let caculation = eval(display.innerText);
+        console.log(caculation);
+        if (caculation % 1 === 0) caculation.toFixed(3);
+        display.innerText = caculation;
+        break;
       default:
+        console.log("123");
         display.innerText += e.target.innerText;
     }
   });
